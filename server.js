@@ -27,7 +27,7 @@ async function getStockQuote(ticker) {
       price: meta.regularMarketPrice,
       previousClose: meta.previousClose,
       change: meta.regularMarketPrice - meta.previousClose,
-      changePct: ((meta.regularMarketPrice - meta.previousClose) / meta.previousClose * 100).toFixed(2),
+      changePct: meta.previousClose ? ((meta.regularMarketPrice - meta.previousClose) / meta.previousClose * 100).toFixed(2) : '0.00',
       volume: meta.regularMarketVolume,
       marketCap: meta.marketCap,
       fiftyTwoWeekHigh: meta.fiftyTwoWeekHigh,

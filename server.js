@@ -245,6 +245,9 @@ FORMATTING:
       { role: 'user', content: userMessage }
     ];
 
+    console.log('Calling Claude API with model:', 'claude-sonnet-4-5');
+    console.log('API Key exists:', !!process.env.ANTHROPIC_API_KEY);
+    
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -264,7 +267,7 @@ FORMATTING:
     return data.content?.[0]?.text || 'Error generating response';
   } catch (e) {
     console.error('Claude error:', e.message);
-    return 'Error connecting to AI — please try again';
+    return `Error connecting to AI: ${e.message}`;
   }
 }
 

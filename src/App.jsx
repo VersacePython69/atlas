@@ -22,7 +22,7 @@ function MarketTicker({ data }) {
           <span style={{ color: "#5a7a9a", fontWeight: 600 }}>{item.name}</span>
           <span style={{ color: "#e8f0f8", fontWeight: 700 }}>{item.price?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
           <span style={{ color: parseFloat(item.changePct) >= 0 ? "#00c87a" : "#ff4d4d", fontWeight: 600 }}>
-            {parseFloat(item.changePct) >= 0 ? "▲" : "▼"} {Math.abs(item.changePct)}%
+            {parseFloat(item.changePct || 0) >= 0 ? "▲" : "▼"} {Math.abs(parseFloat(item.changePct || 0)).toFixed(2)}%
           </span>
         </div>
       ))}
